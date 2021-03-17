@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Knowledge Management Repository</title>
+  <link rel="icon" type="image/png" href="../assets/img/danaher.png"/>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../css/simple-sidebar.css" rel="stylesheet">
+  <link href="../css/theme.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" >
+      <div class="sidebar-heading"><img src="../assets/img/rect_logo2..jpg" class="org-icon"></div>
+      <div class="list-group" >
+        <a href="home.html" class="list-group-item list-group-item-action"><i class="fa fa-home sidebar-icon" aria-hidden="true"></i>Home</a>
+        <a href="myFiles.html" class="list-group-item list-group-item-action sidebar-active"><i class="fa fa-folder sidebar-icon" aria-hidden="true"></i>My Folders</a>
+        <!-- <a href="favorites.html" class="list-group-item list-group-item-action"><i class="fa fa-star sidebar-icon" aria-hidden="true"></i>Favorites</a> -->
+        <a href="trash.html" class="list-group-item list-group-item-action"><i class="fa fa-trash-o sidebar-icon" aria-hidden="true"></i>Trash</a>
+        <a href="myAccount.html" class="list-group-item list-group-item-action"><i class="fa fa-user sidebar-icon" aria-hidden="true"></i>My Account</a>
+        <div class="list-group-item list-group-item-action" style="padding-top: 20px; padding-bottom: 20px;">
+          <div class="row">
+            <div class="col-3" style="padding-left: 10px;">
+              <label class="switch">
+                  <input type="checkbox" id ="themetoggle" onchange="toggleTheme()" />
+                  <span class="slider round"></span> 
+              </label> 
+            </div>
+            <div class="col-9">
+              Dark Theme
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></button><h5 class="nav-item nav-link" style="margin: inherit;">MY FOLDERS</h5>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            
+            <li class="nav-item">
+              <div class="row">    
+                <div class="col-xs-8 col-xs-offset-2">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-btn"> 
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept"><i class="fa fa-filter"></i></span>  <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li>
+                              <div class="input-group pl-2 pr-2 mb-2">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" name="x" placeholder="User Name" id="search_user_name">
+                              </div>
+                            </li>
+                            <li>
+                              <div class="input-group pl-2 pr-2">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text"><i class="fa fa-file-o"></i></span>
+                                </div>
+                                <input type="text" class="form-control" name="x" placeholder="File Type" id="search_file_type">
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>      
+                      <input type="text" class="form-control" name="x" placeholder="Search term..." id="search_keyword">
+                      <div class="input-group-append">
+                        <button class="btn btn-default mr-2" type="button" onclick="searchFilesFolders()"><i class="fa fa-search"></i></button>
+                      </div>
+                  </div>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ></a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="myAccount.html">My Account</a>
+                <!-- <a class="dropdown-item" href="settings.html">Settings</a> -->
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="../index.html" data-toggle="modal" data-target="#logoutModal">Logout</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+          <!-- H1 tag value will change based on where the user is (can also be a folder name) -->
+        <!-- <h1 class="mt-4 mb-4">My Folders</h1> -->
+        
+        <div class="row" id="my_folders">
+          <div class="col-12 mt-4">
+            <div class="card" style="background: transparent; box-shadow: none; border: 0;">
+              <div class="d-flex justify-content-center" style="display: blo">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <!-- <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p> -->
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  
+
+<div class="sticky-bx" id="upload_create">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+    <div class="hover-bx">
+      <div class="ico-bx" id="sbx2">
+        <i class="fa fa-2x fa-folder-o" style="color: white;"></i>
+      </div>
+      <div class="ico-txt" id="sbt2">
+        <span>Create New Folder</span>
+      </div>
+    </div>
+  </button>
+</div>
+
+<!-- Modal for create-->
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create New Folder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Enter Folder Name</label>
+            <input type="text" class="form-control" id="folder_name">
+          </div>
+        </form>
+        <div class="row" id="create_folder_spinner" style="display: none;">
+          <div class="col-12" style="text-align: center;">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="createFolder()">Create</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for Rename-->
+<div class="modal fade" id="rename" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Rename Folder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">New Folder Name</label>
+            <input type="text" class="form-control" id="new_folder_name">
+          </div>
+        </form>
+        <div class="row" id="rename_spinner" style="display: none;">
+          <div class="col-12" style="text-align: center;">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="rename()">Rename</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add to Trash modal -->
+<div class="modal fade" id="trash" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add to Trash</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Do you want to add <span id="folder_name_trash"></span> to trash ?</p>
+        <div class="row" id="add_to_trash_spinner" style="display: none;">
+          <div class="col-12" style="text-align: center;">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="addToTrash()">Confirm</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Logout modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Log Out</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to logout?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="logout()">Logout</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/myFiles.js"></script>
+  <script src="../js/createUpload.js"></script>
+  <script src="../js/utils.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/dragndrop.js"></script>
+  <script src="../js/theme.js"></script>
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>

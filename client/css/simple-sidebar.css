@@ -1,0 +1,413 @@
+/*!
+ * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template/simple-sidebar)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ */
+
+ .theme-light {
+  --color-primary: #0060df;
+  --color-secondary: rgba(255,255,255,0.9);
+  --color-accent: #fd6f53;
+  --font-color: #333333;
+  --color-card: #f1f1f1;
+  --heading-bg: #ffffff;
+  --overlay: rgba(255,255,255,0.8);
+  --purple: #7579ff;
+  --pink: #b224ef;
+  --empty:  #333333;
+}
+.theme-dark {
+  --color-primary: #17ed90;
+  --color-secondary: #25133b;
+  --color-accent: #12cdea;
+  --font-color: #000000;
+  --color-card: #a9a9a9;
+  --heading-bg: #ffffff;
+  --sidebar-bg: #a9a9a9;
+  --overlay: rgb(37, 19, 59, 0.8);
+  --purple: #494c99;
+  --pink: #5b137a;
+  --empty: #fff;
+}
+
+html, body {
+  /* background-color: var(--color-secondary); */
+  font-family: RocknRoll One, sans-serif;;
+  /* background-image: url(../assets/img/bg-01.jpg); */
+  background-color: var(--overlay);
+}
+
+body::after {
+  content: "";
+  background: url(../assets/img/bg-01.jpg);
+  opacity: 0.9;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+
+ h5{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--font-color);
+ }
+
+ #wrapper {
+    overflow-x: hidden;
+ }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+  background: -webkit-linear-gradient(top, var(--color-secondary), var(--color-secondary));
+}
+
+#sidebar-wrapper .sidebar-heading {
+  /* padding: 0.45rem 0.45rem; */
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  color: var(--font-color);
+  background-color: var(--heading-bg);
+}
+
+.org-icon{
+  width: 200px; 
+  height:56px; 
+  position: relative;
+  padding: 10px;
+}
+#sidebar-wrapper .list-group {
+  width: 15rem;
+  font-size: 1.2rem;
+  justify-content: center;
+  background-color: var(--sidebar-bg);
+}
+
+
+/* .list-group-item-action .sidebar-active {
+  background-color: var(--pink);
+} */
+.sidebar-icon {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.3rem;
+}
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.search_input{
+  color: var(--pink);
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color:transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+  }
+
+  .searchbar:hover > .search_input{
+  padding: 0 10px;
+  width: 400px;
+  caret-color: var(--pink);
+  transition: width 0.4s linear;
+  }
+  .search_dropdown{
+    border: 0;
+    outline: 0;
+    width: 0;
+    line-height: 40px;
+  }
+  .searchbar:hover > .search_dropdown{
+    padding: 0 10px;
+  width: 50px;
+    transition: width 0.4s linear;
+  }
+  .searchbar:hover > .search_icon{
+  background: rgb(53, 53, 53);
+  color: #ffffff;
+  }
+
+  .search_icon{
+  height: 40px;
+  width: 40px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:var(--pink);
+  text-decoration:none;
+  }
+
+  .sticky-bx {
+    position: fixed;
+    right: 0px;
+    top: 88%;
+    padding: 16px;
+    width: 60px;
+    direction: rtl;
+    
+  }
+  .hover-bx {
+    direction: ltr;
+    display: inline-block;
+    /* background-color: var(--pink); */
+    white-space: nowrap;
+    border-radius: 5%; /* Rounded corners on the top right and bottom right side */
+    transition: 3s; /* Add transition on hover */
+
+  }
+  .ico-bx {
+    display: inline-block;
+    padding: 8px;
+    transition: 3s; /* Add transition on hover */
+  }
+  .ico-txt {
+    /* margin-left: 10px; */
+    margin-right: 10px;
+    justify-content: center;
+    padding: 0 6px;
+    display: none;
+    color: white;
+    font-size: 16px;
+  }
+  .hover-bx:hover .ico-txt {
+    display: inline-block;
+    position: relative;
+    transition: 3s; /* Add transition on hover */
+  }
+
+  #drop-area {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: inherit;
+    /* height: 360px; */
+    font-family: sans-serif;
+    /* margin: 100px auto; */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #drop-area.highlight {
+    border-color: purple;
+  }
+  p {
+    margin-top: 0;
+    /* color : var(--font-color); */
+  }
+  .my-form {
+    margin-bottom: 10px;
+  }
+  #gallery {
+    margin-top: 10px;
+  }
+  #gallery img {
+    width: 150px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px;
+    background: var(--pink);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .button:hover {
+    background: var(--purple);
+    
+  }
+  #fileElem {
+    display: none;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Float four columns side by side */
+.column {
+  float: left;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: var(--color-card);
+}
+
+i {
+  padding-bottom: 5px;
+}
+/* Responsive columns - one column layout (vertical) on small screens */
+@media screen and (max-width: 600px) {
+  .column {
+    /* width: 100%; */
+    /* display: block; */
+    margin-bottom: 20px;
+  }
+}
+
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
+
+  /* Add rounded corners to the top left and the top right corner of the image inside the card*/
+/* img {
+  border-radius: 5px 5px 0 0;
+} */
+
+.btn-primary {
+  background-color: var(--pink);
+  border-color: var(--pink);
+}
+
+.btn-primary:hover{
+  background-color: var(--purple);
+  border-color: var(--purple);
+}
+
+.details-left{
+  display: inline; 
+  float: left;
+}
+
+.details-right{
+  display: inline; 
+  text-align: right;
+  float: left;
+}
+
+.details-icon{
+  float: left;
+  justify-content: center; 
+  display: flex;
+  margin-top: 40px; 
+}
+
+.list-group{
+  border-radius: 0;
+}
+
+.list-group-item {
+  background-color: var(--sidebar-bg);
+  color: var(--font-color);
+}
+
+.list-group-item-action:hover, .list-group-item-action:focus {
+  z-index: 1;
+  color: var(--purple);
+  text-decoration: none;
+  background-color: #f8f9fa;
+}
+
+.sidebar-active {
+  color: var(--pink);
+}
+.nav-item-hidden{
+  display: none;
+}
+
+.searchbar:hover .nav-item-hidden { 
+  display: inline-block;
+  position: relative;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+}
+
+.search-filter {
+  min-width: 20px;
+  padding: 8px;
+  margin: 4px 4px 4px 4px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  height: 30px;
+}
+
+.search-button {
+  margin-left: 10px;
+}
+
+/* .sidebar-active {
+  background-color: var(--pink);
+} */
+
+.alert-text{
+  animation:blinkingText 1.2s infinite;
+  
+}
+@keyframes blinkingText{
+  0%{     color: #000 }
+  49%{    color: #000 }
+  60%{    color: transparent; }
+  99%{    color:transparent;  }
+  100%{   color: #000; }
+}
+
+.empty-msg{
+  background: transparent; 
+  box-shadow: none; 
+  border: 0;
+  color: var(--empty);
+}
