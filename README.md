@@ -42,6 +42,8 @@ To start the backend server:
 
 Now you have your database ready to use.
 
+Now rename the .env.example file to .env and enter the database credentials
+
 Next, do the following:
 
 ```bash
